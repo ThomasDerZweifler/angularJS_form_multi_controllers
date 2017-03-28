@@ -1,0 +1,15 @@
+
+<div class="jumbotron">
+  <h1>Your reservation has done!</h1>
+  <p>You will receive a confirmation {{$parent.reservationToInsert.getGroupObject().getGroupInformedBy()}} at <i>{{$parent.reservationToInsert.getUserObject().getMovil()}}</i> in the next five minutes. We hope you have a good experience with our team of leisure specialists. Do not hesitate to contact us if you have any doubts about your activity. The following is the booking information:.</p>
+</div>
+<div class="container">
+  <h3>Dear <b>{{$parent.reservationToInsert.getUserObject().getName()}} </b><small>with document <i>{{$parent.reservationToInsert.getUserObject().getDni()}}</i></small></h3>
+  <p>You have done a reservation with your credit card number <b>{{$parent.reservationToInsert.getPayDataObject().getCreditCard()}}</b>, today {{$parent.reservationToInsert.getReservationDate() | date : "EEEE, MMMM d, y"}}</p>
+  <strong>Reservation date:</strong><p> {{$parent.reservationToInsert.getReservationObject().getDate() |  date : "EEEE, MMMM d, y"}} at {{$parent.reservationToInsert.getReservationObject().getHour()}}</p>
+  <strong>Reservation event:</strong><p> {{$parent.reservationToInsert.getReservationObject().getEvent().getName()}}, <i>{{$parent.reservationToInsert.getReservationObject().getEvent().getDescription()}}</i></p>
+  <strong>Number of participants: </strong><p>{{$parent.reservationToInsert.getGroupObject().getMaxPlayers()}}</p>
+  <strong>Price: </strong><p>{{$parent.reservationToInsert.getReservationObject().getEvent().getPrice()}}$</p>
+  <p ng-if="$parent.reservationToInsert.getGroupObject().getAdult()" style="float: right;"><i>*All members of this group are adults</i></p>
+    <p ng-if="!$parent.reservationToInsert.getGroupObject().getAdult()" style="float: right;"><i>*There are some kids in this group</i></p>
+</div>

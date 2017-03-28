@@ -1,0 +1,47 @@
+<form class="login2" name="reservationManagement" novalidate ng-submit="reservationManagement.$valid && hotelResCtrl.submit()">
+
+	<h2>Choose your Scape Room!</h2>
+
+	<div class="panel panel-default">
+		<div class="panel-heading"><select ng-options="event as event.name for event in allEvents track by event.id" ng-model="eventToInsert"></select></div>
+		<div class="panel-body"><p>{{eventToInsert.description}}</p><br></div>
+		<div class="panel-footer"><input class="form-control" type="text" ng-model="eventToInsert.price" ng-currency readonly/></div>
+	</div>
+	<div><img class="img-responsive" src="{{eventToInsert.image}}"></div>
+
+	<div class="form-group">
+		<label for="date">Date of your adventure:</label>
+		<div>
+			<p class="input-group">
+				<input type="text"
+				ng-model="reservation.date"
+				class="form-control"
+				id="checkInDate"
+				uib-datepicker-popup="{{format}}"
+				is-open="checkInDate.opened"
+				datepicker-options="dateOptions"
+				close-text="Close"
+				alt-input-formats="altInputFormats"
+				readonly/>
+				<span class="input-group-btn">
+					<button type="button" class="btn btn-default" ng-click="openCheckInDate()"><i class="glyphicon glyphicon-calendar"></i></button>
+				</span>
+			</p>
+		</div>
+	</div>
+
+	<div class="form-group">
+		<label for="hour">Hour of event:</label>
+		<div>
+			<select class="form-control" name="checkInTime" id="checkInTime" ng-model="reservation.hour" ng-options="items for items in Time" required>
+			</select>
+		</div>
+	</div>
+
+	<div class="form-group">
+		<label for="formGroup"></label>
+		<button class="btn btn-default btn-success btn-block" ng-click="setReservation()"> Next </button>
+		<input class="btn btn-default btn-primary btn-block" type="button" value="Back" ng-click="$parent.showAction=2" >
+	</div>
+
+</form>
