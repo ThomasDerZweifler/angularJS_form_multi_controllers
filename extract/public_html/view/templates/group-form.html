@@ -1,0 +1,66 @@
+<h1>Group</h1><br>
+<!-- form to register an user -->
+<form name="register">
+    <div class="form-group">
+      <!--button type="button" name="button" ng-click="test()">click</button-->
+        <label for="groupName">Group name:</label>
+        <input type="text" class="form-control" name="groupName" pattern="[a-zA-Z ]{3,15}" value="" ng-model="group.groupName" required/>
+        <!-- show if error -->
+        <div  class="has-error">
+            <span ng-show="register.groupName.$invalid && register.groupName.$dirty" class="help-block">
+                Please, enter a valid name.
+            </span>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="informedBy">How do you want to be informed your group:</label><br>
+
+        <input type="radio" name="informedBy"  ng-model="group.groupInformedBy" value="WhatsApp" checked >
+        by WhatsApp
+        <br/>
+
+        <input type="radio" name="informedBy"  ng-model="group.groupInformedBy" value="SMS">
+        by SMS
+        <br/>
+
+    </div>
+
+</form>
+<label for="member">Group formed by this members:</label>
+<div class="form-group">
+    <ul class="list-unstyled">
+      <li> <span class="glyphicon glyphicon-user"></span> {{$parent.reservationToInsert.getUserObject().getName()}}
+         {{$parent.reservationToInsert.getUserObject().getMovil()}}
+      <span class="glyphicon glyphicon-flag"></span> <br></li>
+        <li ng-repeat="u in group.users" ng-if="$index!=0">
+            <span class="glyphicon glyphicon-user"></span><span name="member" ng-click="deleteUser($index, u)"> {{u.name}}   {{u.movil}}   </span>
+            <button ng-show="$index > 0" type='button' ng-click="deleteUser($index, u)" class="btn btn-danger btn-xs" >
+                <span class="glyphicon glyphicon-remove"></span>
+            </button><br>
+        </li>
+    </ul>
+    <form name="newMember">
+        <label for="userName">User name:</label>
+        <input type="text" class="form-control" ng-model="userName" placeholder="userName">
+        <label for="userMovil">User mobile</label>
+        <input type="text" class="form-control" pattern="[0-9]{9,13}" name="movil" ng-model="userMovil" placeholder="userMovil" required/>
+        <!-- show if error -->
+        <div  class="has-error">
+            <span ng-show="register.movil.$invalid && register.movil.$dirty" class="help-block">
+                Please, enter a valid mobile number.
+            </span>
+        </div>
+        <button class="btn btn-primary" ng-disabled="newMember.$invalid" ng-click="addUser(userName, userMovil)" type="submit">Add member to group</button>
+    </form>
+</div>
+<br>
+<label>All member are adults:
+    <input type="checkbox" ng-model="group.adult">
+  </label><br/>
+
+  <!-- submit button is disabled if inputs are not correct -->
+<div class="form-group">
+        <label for="formGroup"></label>
+        <button class="btn btn-default btn-success btn-block" ng-disabled="register.$invalid" ng-click="setReservation()"> Next </button>
+        <input class="btn btn-default btn-primary btn-block" ng-click="$parent.showAction=1" type="button" value="Back" >
+    </div>

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html ng-app="scapeRoomApp">
+  <head>
+    <title>Scape Rooms!</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Hotel 50's</title>
+    <!-- css-->
+    <!--link rel="stylesheet" type="text/css" href="vendors/bootstrap/css/bootstrap.min.css" /-->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+<!-- Optional theme -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <link rel="stylesheet" type="text/css" href="css/styles.css" />
+
+    <!-- jQuery-->
+    <script src="vendors/jquery/js/jQuery.js" type="text/javascript" xml:space="preserve"></script>
+
+
+    <!-- Angular-->
+    <script src="vendors/angular/js/angular.min.js" type="text/javascript" xml:space="preserve"></script>
+    <script src="vendors/angular/js/angular-file-upload.js" type="text/javascript" xml:space="preserve"></script>
+    <script src="vendors/angular/js/angular-i18n/angular-locale_es-es.js" type="text/javascript" xml:space="preserve"></script>
+    <script src="vendors/angular/js/ng-currency.js" type="text/javascript" xml:space="preserve"></script>
+    <script src="vendors/bootstrap/js/ui-bootstrap-tpls-2.3.1.min.js" type="text/javascript" xml:space="preserve"></script>
+
+    <!-- Own code-->
+    <!-- Model-->
+    <script src="js/model/eventObject.js" type="text/javascript" xml:space="preserve"></script>
+    <script src="js/model/payDataObject.js" type="text/javascript" xml:space="preserve"></script>
+    <script src="js/model/reservationObject.js" type="text/javascript" xml:space="preserve"></script>
+    <script src="js/model/User.js" type="text/javascript" xml:space="preserve"></script>
+        <script src="js/model/Group.js" type="text/javascript" xml:space="preserve"></script>
+
+    <!-- Controllers-->
+    <script src="js/app.js" type="text/javascript" xml:space="preserve"></script>
+    <script src="js/model/finalReservationObject.js" type="text/javascript" xml:space="preserve"></script>
+    <script src="js/controller/mainController.js" xml:space="preserve"></script>
+    <script src="js/controller/generalFunctions.js" type="text/javascript" xml:space="preserve"></script>
+    <script src="js/controller/eventController.js" type="text/javascript" xml:space="preserve"></script>
+    <script src="js/controller/paymentController.js" type="text/javascript" xml:space="preserve"></script>
+    <script src="js/controller/finalController.js" type="text/javascript" xml:space="preserve"></script>
+    <script src="js/controller/groupController.js" type="text/javascript" xml:space="preserve"></script>
+    <script src="js/controller/userController.js" type="text/javascript" xml:space="preserve"></script>
+  </head>
+  <body class="container" ng-controller="mainController">
+    <div class="imageDiv">
+      <img src="images/header.jpg" id='logo' width="100%" height="240" /></br>
+    </div>
+    <div id="user" ng-show="$parent.showAction==1" ng-controller="userController">
+      <user-form></user-form>
+    </div>
+    <div id="groups" ng-show="$parent.showAction==2" ng-controller="groupController">
+    <group-form></group-form>
+  </div>
+    <div id="reservation" ng-show="$parent.showAction==3" ng-controller="eventController">
+      <event-form></event-form>
+    </div>
+    <div id="reviews" ng-show="$parent.showAction==4" ng-controller="paymentController">
+      <payment-form></payment-form>
+    </div>
+    <div id="final" ng-show="$parent.showAction==5" ng-controller="finalController">
+      <final-form></final-form>
+    </div>
+  </body>
+</html>
